@@ -1,13 +1,18 @@
-// import 'package:bloc/bloc.dart';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gpc_frontend/feature_modules/landing_page/bloc/landing_page_bloc.dart';
+import 'package:gpc_frontend/feature_modules/landing_page/bloc/landing_page_event.dart';
+import 'package:gpc_frontend/feature_modules/landing_page/bloc/landing_page_state.dart';
 
 class LandingPageWidget extends StatelessWidget {
   final String appBarTitle = 'Showcase "BookAShare"';
 
   @override
   Widget build(BuildContext context) {
+    final bloc = LandingPageBloc();
+
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -19,23 +24,29 @@ class LandingPageWidget extends StatelessWidget {
           child: Column(
             children: <Widget>[
               RaisedButton(
-                onPressed: () => {
-
-                },
+                onPressed: () => bloc.add(GetVehicles()),
                 child: Text(
-                  'Load JSON',
+                  'Send Request',
                   style: TextStyle(fontSize: 20),
                 ),
               ),
-              TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: '',
-                ),
+              BlocBuilder(
+                cubit: bloc,
+                builder: _buildTextContent,
               )
             ],
           ),
         ));
+  }
+
+  Text _buildTextContent(
+    BuildContext context,
+    LandingPageState state,
+  ) {
+    if (state is LandingPageInitial) {
+      return Text(state.content);
+    } else {
+      return Text('Loading the request');
+    }
   }
 }
