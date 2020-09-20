@@ -31,12 +31,6 @@ class LandingPageWidget extends StatelessWidget {
             );
           }
         },
-        //   Scaffold.of(context).showSnackBar(SnackBar(
-        //     content: Text('', style: TextStyle(color: Theme.of(context).primaryColorDark),),
-        //     backgroundColor: Theme.of(context).primaryColorLight,
-        //   ));
-        // }
-        // },
         child: Padding(
           padding: EdgeInsets.all(16.0),
           child: Column(
