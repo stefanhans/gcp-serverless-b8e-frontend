@@ -3,10 +3,9 @@ import 'package:gpc_frontend/feature_modules/landing_page/bloc/landing_page_even
 import 'package:gpc_frontend/feature_modules/landing_page/bloc/landing_page_state.dart';
 import '../util/net.dart' as http;
 
-const String initialContent = 'ready when you are :)';
 
 class LandingPageBloc extends Bloc<LandingPageEvent, LandingPageState> {
-  LandingPageBloc() : super(LandingPageInitial(initialContent));
+  LandingPageBloc() : super(LandingPageInitial(null));
 
   @override
   Stream<LandingPageState> mapEventToState(LandingPageEvent event) async* {
@@ -17,7 +16,28 @@ class LandingPageBloc extends Bloc<LandingPageEvent, LandingPageState> {
 
   Stream<LandingPageState> _mapGetVehicles() async* {
     yield LandingPageLoading();
-    final response = await Future.delayed(const Duration(seconds: 3), () => 'your dummy response');
+    final response = await Future.delayed(const Duration(seconds: 3), () => '''{
+    "glossary": {
+        "title": "example glossary",
+		"GlossDiv": {
+            "title": "S",
+			"GlossList": {
+                "GlossEntry": {
+                    "ID": "SGML",
+					"SortAs": "SGML",
+					"GlossTerm": "Standard Generalized Markup Language",
+					"Acronym": "SGML",
+					"Abbrev": "ISO 8879:1986",
+					"GlossDef": {
+                        "para": "A meta-markup language, used to create markup languages such as DocBook.",
+						"GlossSeeAlso": ["GML", "XML"]
+                    },
+					"GlossSee": "markup"
+                }
+            }
+        }
+    }
+}''');
     // final response = await http.createTranslationResponse();
     yield LandingPageInitial(response);
   }

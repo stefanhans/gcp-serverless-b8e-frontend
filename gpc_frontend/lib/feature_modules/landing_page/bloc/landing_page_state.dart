@@ -8,8 +8,7 @@ class LandingPageState extends Equatable {
 
 class LandingPageInitial extends LandingPageState {
   final String content;
-  LandingPageInitial(this.content)
-      : assert(content != null && content.isNotEmpty);
+  LandingPageInitial(this.content);
 }
 
 class LandingPageLoading extends LandingPageState {}
