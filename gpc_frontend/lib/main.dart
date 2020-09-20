@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gpc_frontend/feature_modules/landing_page/widget/landing_page_widget.dart';
+import 'package:gpc_frontend/feature_modules/landing_page/landing_page.dart';
 
 void main() {
   runApp(MyApp());
