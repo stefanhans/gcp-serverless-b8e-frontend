@@ -28,29 +28,33 @@ Future<List<Vehicle>> createMasterDataResponse() async {
     },
     body: jsonEncode(<String, String>{}),
   );
-    print("body: " + response.body);
+  print("body: " + response.body);
 
-    print(json.decode(response.body));
-    Map<String, dynamic> md = MasterDataResponse.fromJson(json.decode(response.body)).MasterData[0];
+  print(json.decode(response.body));
+  Map<String, dynamic> md =
+      MasterDataResponse.fromJson(json.decode(response.body)).MasterData[0];
 
+  List<Vehicle> lv = new List<Vehicle>();
 
-    List<Vehicle> lv = new List<Vehicle>();
+//  print("md[GeoPoint]: "+md["GeoPoint"]);
 
-    Geopoint gp = json.decode(md["GeoPoint"]);
+//  Map<String, dynamic> mapGp = json.decode(md["GeoPoint"]);
+//
+//  print("mapGp[Latitude]: "+mapGp["Latitude"]);
 
-    lv.add(Vehicle(
-        DocId: md["DocId"],
-        Name: md["Name"],
-        Type: md["Type"],
-        Status: md["Status"],
-        ParkingLot: md["ParkingLot"],
-        GeoPoint: gp,
-        Description: md["Description"]));
+  Geopoint gp = Geopoint(Latitude: 0.1, Longitude: 0.2);
+  lv.add(Vehicle(
+      DocId: md["DocId"],
+      Name: md["Name"],
+      Type: md["Type"],
+      Status: md["Status"],
+      ParkingLot: md["ParkingLot"],
+      GeoPoint: gp,
+      Description: md["Description"]));
 
   if (response.statusCode == 200) {
     return lv;
   } else {
-
     Geopoint gp = Geopoint(Latitude: 0.1, Longitude: 0.2);
 
     Vehicle v = Vehicle(
