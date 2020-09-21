@@ -39,6 +39,6 @@ class LandingPageBloc extends Bloc<LandingPageEvent, LandingPageState> {
 //    }
 //}''');
      final response = await net.createMasterDataResponse();
-    yield LandingPageInitial(response);
+    yield LandingPageInitial(response.DocId);
   }
 }

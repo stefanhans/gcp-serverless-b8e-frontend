@@ -1,40 +1,63 @@
- import 'dart:async';
- import 'dart:convert';
+import 'dart:async';
+import 'dart:convert';
 
- import 'package:http/http.dart' as http;
- import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:http/http.dart' as http;
+
+import './types.dart';
 // //kIsWeb documentation: https://api.flutter.dev/flutter/foundation/kIsWeb-constant.html
 
- String url;
+String url;
 // String text = "";
 
+Future<Vehicles> createMasterDataResponse() async {
+  if (kIsWeb) {
+    url =
+        'https://cors-anywhere.herokuapp.com/ https://europe-west3-serverless-devops-play.cloudfunctions.net/get-vehicles';
+  } else {
+    url =
+        'https://europe-west3-serverless-devops-play.cloudfunctions.net/get-vehicles';
+  }
 
+  print("url: " + url);
 
- Future<String> createMasterDataResponse() async {
-   if (kIsWeb) {
-     url =
-     'https://cors-anywhere.herokuapp.com/ https://europe-west3-serverless-devops-play.cloudfunctions.net/get-vehicles';
-   } else {
-     url =
-     'https://europe-west3-serverless-devops-play.cloudfunctions.net/get-vehicles';
-   }
-
-
-   print("url: " + url);
-
-   final http.Response response = await http.post(
+  final http.Response response = await http.post(
     url,
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
-    body: jsonEncode(<String, String>{
-    }),
+    body: jsonEncode(<String, String>{}),
   );
   if (response.statusCode == 200) {
+    print("body: " + response.body);
     //    translationDisplay.status = "translated";
-    return response.body;
+
+    Geopoint gp = Geopoint(Latitude: 0.1, Longitude: 0.2);
+
+    Vehicles v = Vehicles(
+        DocId: "a",
+        Name: "a",
+        Type: "a",
+        Status: "a",
+        ParkingLot: "",
+        GeoPoint: gp,
+        Description: "");
+
+    return v;
   } else {
-    return response.body;
+
+    Geopoint gp = Geopoint(Latitude: 0.1, Longitude: 0.2);
+
+    Vehicles v = Vehicles(
+        DocId: "a",
+        Name: "a",
+        Type: "a",
+        Status: "a",
+        ParkingLot: "",
+        GeoPoint: gp,
+        Description: "");
+    return v;
+    //Vehicles.fromJson(json.decode(response.body))
   }
 }
 
@@ -73,8 +96,6 @@
 //   }
 // }
 
-
-
 // class TranslationDisplay {
 //   String taskId;
 //   String sourceText;
@@ -92,7 +113,6 @@
 //     this.status = status;
 //   }
 // }
-
 
 // class Translator {
 //   String clientVersion;
@@ -160,4 +180,3 @@
 //     );
 //   }
 // }
-
