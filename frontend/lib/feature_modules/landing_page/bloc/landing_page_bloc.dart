@@ -39,6 +39,7 @@ class LandingPageBloc extends Bloc<LandingPageEvent, LandingPageState> {
 //    }
 //}''');
      final response = await net.createMasterDataResponse();
-    yield LandingPageInitial(response.DocId);
+//    yield LandingPageInitial(response[0].GeoPoint.toString());
+    yield LandingPageInitial(response[0].DocId);
   }
 }

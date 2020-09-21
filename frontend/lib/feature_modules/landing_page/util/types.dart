@@ -8,7 +8,7 @@ class Geopoint {
   }
 }
 
-class Vehicles {
+class Vehicle {
   String DocId;
   String Name;
   String Type;
@@ -17,7 +17,7 @@ class Vehicles {
   Geopoint GeoPoint;
   String Description;
 
-  Vehicles(
+  Vehicle(
       {String DocId,
       String Name,
       String Type,
@@ -35,30 +35,48 @@ class Vehicles {
   }
 
   //
-  factory Vehicles.fromJson(List<Map<String, dynamic>> json) {
-    print("factory Vehicles");
+//  factory Vehicle.fromJson(Map<String, dynamic> json) {
+//    print("factory Vehicles");
+//    print(json.toString());
+//
+//    Geopoint gp;
+//
+//    gp.Latitude = 0.1;
+//    gp.Longitude = 0.2;
+//
+//    Vehicle v = Vehicle(
+//        DocId: "a",
+//        Name: "a",
+//        Type: "a",
+//        Status: "a",
+//        ParkingLot: "",
+//        GeoPoint: gp,
+//        Description: "");
+//
+//    List<Vehicle> lv;
+//    lv.add(v);
+//
+//
+//
+//    return v;
+//  }
+}
+
+
+
+class MasterDataResponse {
+//  final List<Vehicles>{};
+  final List<dynamic> MasterData;
+
+  MasterDataResponse({this.MasterData});
+
+  factory MasterDataResponse.fromJson(List<dynamic> json) {
+    print("factory MasterDataResponse");
     print(json.toString());
 
-    Geopoint gp;
-
-    gp.Latitude = 0.1;
-    gp.Longitude = 0.2;
-
-    Vehicles v = Vehicles(
-        DocId: "a",
-        Name: "a",
-        Type: "a",
-        Status: "a",
-        ParkingLot: "",
-        GeoPoint: gp,
-        Description: "");
-
-    List<Vehicles> lv;
-    lv.add(v);
-
-
-
-    return v;
+    return MasterDataResponse(
+      MasterData: json,
+    );
   }
 }
 

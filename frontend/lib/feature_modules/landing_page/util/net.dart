@@ -10,7 +10,7 @@ import './types.dart';
 String url;
 // String text = "";
 
-Future<Vehicles> createMasterDataResponse() async {
+Future<List<Vehicle>> createMasterDataResponse() async {
   if (kIsWeb) {
     url =
         'https://cors-anywhere.herokuapp.com/ https://europe-west3-serverless-devops-play.cloudfunctions.net/get-vehicles';
@@ -28,27 +28,32 @@ Future<Vehicles> createMasterDataResponse() async {
     },
     body: jsonEncode(<String, String>{}),
   );
-  if (response.statusCode == 200) {
     print("body: " + response.body);
-    //    translationDisplay.status = "translated";
 
-    Geopoint gp = Geopoint(Latitude: 0.1, Longitude: 0.2);
+    print(json.decode(response.body));
+    Map<String, dynamic> md = MasterDataResponse.fromJson(json.decode(response.body)).MasterData[0];
 
-    Vehicles v = Vehicles(
-        DocId: "a",
-        Name: "a",
-        Type: "a",
-        Status: "a",
-        ParkingLot: "",
+
+    List<Vehicle> lv = new List<Vehicle>();
+
+    Geopoint gp = json.decode(md["GeoPoint"]);
+
+    lv.add(Vehicle(
+        DocId: md["DocId"],
+        Name: md["Name"],
+        Type: md["Type"],
+        Status: md["Status"],
+        ParkingLot: md["ParkingLot"],
         GeoPoint: gp,
-        Description: "");
+        Description: md["Description"]));
 
-    return v;
+  if (response.statusCode == 200) {
+    return lv;
   } else {
 
     Geopoint gp = Geopoint(Latitude: 0.1, Longitude: 0.2);
 
-    Vehicles v = Vehicles(
+    Vehicle v = Vehicle(
         DocId: "a",
         Name: "a",
         Type: "a",
@@ -56,7 +61,7 @@ Future<Vehicles> createMasterDataResponse() async {
         ParkingLot: "",
         GeoPoint: gp,
         Description: "");
-    return v;
+    return lv;
     //Vehicles.fromJson(json.decode(response.body))
   }
 }
