@@ -1,14 +1,44 @@
-// import 'dart:async';
-// import 'dart:convert';
+ import 'dart:async';
+ import 'dart:convert';
 
-// import 'package:http/http.dart' as http;
-// import 'package:flutter/foundation.dart' show kIsWeb;
+ import 'package:http/http.dart' as http;
+ import 'package:flutter/foundation.dart' show kIsWeb;
 // //kIsWeb documentation: https://api.flutter.dev/flutter/foundation/kIsWeb-constant.html
 
-// String url;
+ String url;
 // String text = "";
 
-// Future<String> createTranslationResponse(
+
+
+ Future<String> createMasterDataResponse() async {
+   if (kIsWeb) {
+     url =
+     'https://cors-anywhere.herokuapp.com/ https://europe-west3-serverless-devops-play.cloudfunctions.net/get-vehicles';
+   } else {
+     url =
+     'https://europe-west3-serverless-devops-play.cloudfunctions.net/get-vehicles';
+   }
+
+
+   print("url: " + url);
+
+   final http.Response response = await http.post(
+    url,
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, String>{
+    }),
+  );
+  if (response.statusCode == 200) {
+    //    translationDisplay.status = "translated";
+    return response.body;
+  } else {
+    return response.body;
+  }
+}
+
+// Future<String> createMasterDataResponse(
 //     {String text = "",
 //       String sourceLanguage = 'en',
 //       String targetLanguage = 'en'}) async {
