@@ -28,13 +28,22 @@ Future<List<Vehicle>> createMasterDataResponse() async {
     },
     body: jsonEncode(<String, String>{}),
   );
-  print("body: " + response.body);
 
+  print("body: " + response.body);
   print(json.decode(response.body));
-  Map<String, dynamic> md =
-      MasterDataResponse.fromJson(json.decode(response.body)).MasterData[0];
+
+
 
   List<Vehicle> lv = new List<Vehicle>();
+
+  for ( var vehicle in MasterDataResponse.fromJson(json.decode(response.body)).MasterData) {
+
+
+    print("vehicle: " + vehicle.toString());
+  }
+
+  Map<String, dynamic> md =
+      MasterDataResponse.fromJson(json.decode(response.body)).MasterData[0];
 
   print("md[GeoPoint]: "+md["GeoPoint"].toString());
 
@@ -65,16 +74,6 @@ Future<List<Vehicle>> createMasterDataResponse() async {
   if (response.statusCode == 200) {
     return lv;
   } else {
-    Geopoint gp = Geopoint(Latitude: 0.1, Longitude: 0.2);
-
-    Vehicle v = Vehicle(
-        DocId: "a",
-        Name: "a",
-        Type: "a",
-        Status: "a",
-        ParkingLot: "",
-        GeoPoint: gp,
-        Description: "");
     return lv;
     //Vehicles.fromJson(json.decode(response.body))
   }
