@@ -19,9 +19,16 @@ dependencies:
     # Added for https://flutter.dev/docs/cookbook/networking/send-data
     http: ^0.12.1
 
+    # https://github.com/google/json_serializable.dart/tree/master/example
+    # json_annotation: ^3.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  # https://github.com/google/json_serializable.dart/tree/master/example
+  # build_runner: ^1.0.0
+  # json_serializable: ^3.2.0
 
 flutter:
   uses-material-design: true

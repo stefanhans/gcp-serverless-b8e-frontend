@@ -36,13 +36,23 @@ Future<List<Vehicle>> createMasterDataResponse() async {
 
   List<Vehicle> lv = new List<Vehicle>();
 
-//  print("md[GeoPoint]: "+md["GeoPoint"]);
+  print("md[GeoPoint]: "+md["GeoPoint"].toString());
 
 //  Map<String, dynamic> mapGp = json.decode(md["GeoPoint"]);
 //
 //  print("mapGp[Latitude]: "+mapGp["Latitude"]);
 
-  Geopoint gp = Geopoint(Latitude: 0.1, Longitude: 0.2);
+//  Geopoint gp = Geopoint(Latitude: 0.1, Longitude: 0.2);
+
+//  print(json.decode(md["GeoPoint"].toString()));
+
+//  Map<String, double> mgp = Geopoint.fromJson(json.decode(md["GeoPoint"].toString()));
+  print(" XXXXX { \"latitude\": 66, \"longitude\": 55}");
+
+//  Geopoint gp = Geopoint.fromJson(json.decode("{ \"latitude\": 66, \"longitude\": 55}"));
+
+  print(md["GeoPoint"].toString().replaceAll("latitude", "\"latitude\'").replaceAll("longitude", "\"longitude\""));
+  Geopoint gp = Geopoint.fromJson(json.decode(md["GeoPoint"].toString().replaceAll("latitude", "\"latitude\"").replaceAll("longitude", "\"longitude\"")));
   lv.add(Vehicle(
       DocId: md["DocId"],
       Name: md["Name"],

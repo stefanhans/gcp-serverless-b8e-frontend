@@ -6,6 +6,28 @@ class Geopoint {
     this.Latitude = Latitude;
     this.Longitude = Longitude;
   }
+
+  factory Geopoint.fromJson(Map<String, dynamic> json) {
+    print("types.dart Geopoint:");
+    print(json.toString());
+
+    return Geopoint(
+      Latitude: double.parse(json["latitude"].toString()),
+      Longitude: double.parse(json["longitude"].toString())
+    );
+  }
+
+  Map<String, dynamic> toJson() =>
+      {
+        'latitude': Latitude,
+        'longitude': Longitude,
+      };
+
+  String toString() {
+    return "Geopoint:\n"
+        +"\tlatitude: "+this.Latitude.toString()+"\n"
+        +"\tlongitude: "+this.Longitude.toString()+"\n";
+  }
 }
 
 class Vehicle {
@@ -32,6 +54,17 @@ class Vehicle {
     this.ParkingLot = ParkingLot;
     this.GeoPoint = GeoPoint;
     this.Description = Description;
+  }
+
+  String toString() {
+    return "Vehicle:\n"
+        +"DocId: "+this.DocId+"\n"
+        +"Name: "+this.Name+"\n"
+        +"Type: "+this.Type+"\n"
+        +"Status: "+this.Status+"\n"
+        +"ParkingLot: "+this.ParkingLot+"\n"
+        +this.GeoPoint.toString()
+        +"Description: "+this.Description+"\n";
   }
 
   //
@@ -71,7 +104,7 @@ class MasterDataResponse {
   MasterDataResponse({this.MasterData});
 
   factory MasterDataResponse.fromJson(List<dynamic> json) {
-    print("factory MasterDataResponse");
+    print("types.dart MasterDataResponse:");
     print(json.toString());
 
     return MasterDataResponse(
