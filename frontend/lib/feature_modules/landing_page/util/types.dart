@@ -18,10 +18,14 @@ class MasterData {
     );
   }
 
-
-  Map<String, dynamic> toJson() => {
-    'vehicles': vehicles,
-  };
+  String toJson() {
+    String jsonVehicles = "";
+    for (var i=0; i<vehicles.length-1; i++) {
+      jsonVehicles += vehicles[i].toJson()+",";
+    }
+    jsonVehicles += vehicles[vehicles.length-1].toJson();
+    return "{\"Vehicles\":"+"["+jsonVehicles+"]}";
+  }
 }
 
 class Vehicle {
@@ -68,38 +72,28 @@ class Vehicle {
     );
   }
 
-
-  Map<String, dynamic> toJson() => {
-    'DocId': DocId,
-    'Name': Name,
-    'Type': Type,
-    'Status': Status,
-    'ParkingLot': ParkingLot,
-    'GeoPoint': GeoPoint,
-    'Description': Description,
-  };
-
-  String toString() {
-    return "Vehicle:\n" +
-        "DocId: " +
-        this.DocId +
-        "\n" +
-        "Name: " +
-        this.Name +
-        "\n" +
-        "Type: " +
-        this.Type +
-        "\n" +
-        "Status: " +
-        this.Status +
-        "\n" +
-        "ParkingLot: " +
-        this.ParkingLot +
-        "\n" +
-        this.GeoPoint.toString() +
-        "Description: " +
-        this.Description +
-        "\n";
+  String toJson() {
+    return "{" +
+        "\"DocId\": " +
+        "\""+this.DocId+"\"" +
+        "," +
+        "\"Name\": " +
+        "\""+this.Name+"\"" +
+        "," +
+        "\"Type\": " +
+        "\""+this.Type+"\"" +
+        "," +
+        "\"Status\": " +
+        "\""+this.Status+"\"" +
+        "," +
+        "\"ParkingLot\": " +
+        "\""+this.ParkingLot+"\"" +
+        "," +
+        "\"Geopoint\": " +
+        this.GeoPoint.toJson() +
+        ",\"Description\": " +
+        "\""+this.Description+"\"" +
+        "}";
   }
 }
 
@@ -121,18 +115,12 @@ class Geopoint {
         Longitude: double.parse(json["longitude"].toString()));
   }
 
-  Map<String, dynamic> toJson() => {
-        'latitude': Latitude,
-        'longitude': Longitude,
-      };
-
-  String toString() {
-    return "Geopoint:\n" +
-        "\tlatitude: " +
-        this.Latitude.toString() +
-        "\n" +
-        "\tlongitude: " +
+  String toJson() {
+    return "{" +
+        "\"latitude\": " +
+        this.Latitude.toString() + ","
+        "\"longitude\": " +
         this.Longitude.toString() +
-        "\n";
+        "}";
   }
 }

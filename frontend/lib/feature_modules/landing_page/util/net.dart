@@ -31,11 +31,25 @@ Future<List<Vehicle>> createMasterDataResponse() async {
 
   print("net.dart body: " + response.body);
 
+  MasterData masterData = MasterData.fromJson(json.decode(response.body));
+
   List<Vehicle> vehicles = MasterData.fromJson(json.decode(response.body)).vehicles;
 
+
+  print("masterData: " + masterData.toJson());
   print("net.dart vehicles.length: " + vehicles.length.toString());
   print("net.dart vehicles.toString: " + vehicles.toString());
-  print("net.dart vehicles[0].toJson(): " + vehicles[0].toJson().toString());
+  print("net.dart vehicles[0].toJson(): " + vehicles[0].toJson());
+
+  // for (var v in vehicles) {
+  //   print(v.toJson().toString());
+  //   print("----");
+  // }
+
+  print("net.dart vehicles.toJson: " + vehicles[0].toJson());
+
+
+  print("net.dart geopoint.toJson: " + vehicles[0].GeoPoint.toJson());
 
   if (response.statusCode == 200) {
     return vehicles;
