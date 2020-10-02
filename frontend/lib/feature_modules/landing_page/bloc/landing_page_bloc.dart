@@ -24,20 +24,26 @@ class LandingPageBloc extends Bloc<LandingPageEvent, LandingPageState> {
 
     // MasterData
     final response = await net.createMasterDataResponse();
-    yield LandingPageInitial(response.toJson());
 
-    printWrapped("OUT: " + response.toJson());
+    // yield LandingPageInitial(response.toJson());
+    // printWrapped("OUT: " + response.toJson());
 
-    // Users
+    yield LandingPageInitial(response.usersToJson());
+    printWrapped("OUT: " + response.usersToJson());
+
+    // // Users
     // final response = await net.createUsersResponse();
     // yield LandingPageInitial(response[0].toJson());
+    // printWrapped("OUT: " + response[0].toJson());
 
     // // Vehicles
     // final response = await net.createVehiclesResponse();
     // yield LandingPageInitial(response[0].toJson());
+    // printWrapped("OUT: " + response[0].toJson());
 
     // // Bookings
     // final response = await net.createBookingsResponse();
     // yield LandingPageInitial(response[0].toJson());
+    // printWrapped("OUT: " + response[0].toJson());
   }
 }

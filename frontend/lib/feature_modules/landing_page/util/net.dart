@@ -34,6 +34,8 @@ Future<MasterData> createMasterDataResponse() async {
 
   MasterData _masterData = MasterData.fromJson(json.decode(response.body));
 
+  print("ZZZZ: " + _masterData.usersToJson());
+
   if (response.statusCode == 200) {
     return _masterData;
   } else {
@@ -46,10 +48,10 @@ Future<List<User>> createUsersResponse() async {
   print("CALL: util/net.dart createUsersResponse()");
   if (kIsWeb) {
     url =
-    'https://cors-anywhere.herokuapp.com/ https://europe-west3-serverless-devops-play.cloudfunctions.net/get-users';
+        'https://cors-anywhere.herokuapp.com/ https://europe-west3-serverless-devops-play.cloudfunctions.net/get-users';
   } else {
     url =
-    'https://europe-west3-serverless-devops-play.cloudfunctions.net/get-users';
+        'https://europe-west3-serverless-devops-play.cloudfunctions.net/get-users';
   }
 
   print("net.dart url: " + url);
@@ -62,9 +64,6 @@ Future<List<User>> createUsersResponse() async {
     body: jsonEncode(<String, String>{}),
   );
   print("net.dart createUsersResponse() body: " + response.body);
-
-
-
 
   List<User> _users = new List<User>();
   for (var user in json.decode(response.body)) {
@@ -84,10 +83,10 @@ Future<List<Vehicle>> createVehiclesResponse() async {
   print("CALL: util/net.dart createVehiclesResponse()");
   if (kIsWeb) {
     url =
-    'https://cors-anywhere.herokuapp.com/ https://europe-west3-serverless-devops-play.cloudfunctions.net/get-vehicles';
+        'https://cors-anywhere.herokuapp.com/ https://europe-west3-serverless-devops-play.cloudfunctions.net/get-vehicles';
   } else {
     url =
-    'https://europe-west3-serverless-devops-play.cloudfunctions.net/get-vehicles';
+        'https://europe-west3-serverless-devops-play.cloudfunctions.net/get-vehicles';
   }
 
   print("net.dart url: " + url);
@@ -102,7 +101,6 @@ Future<List<Vehicle>> createVehiclesResponse() async {
   print("net.dart createVehiclesResponse() body: " + response.body);
 
   // List<Vehicle> _vehicles = MasterData.fromJson(json.decode(response.body)).vehicles;
-
 
   List<Vehicle> _vehicles = new List<Vehicle>();
   for (var vehicle in json.decode(response.body)) {
@@ -122,10 +120,10 @@ Future<List<Booking>> createBookingsResponse() async {
   print("CALL: util/net.dart createBookingsResponse()");
   if (kIsWeb) {
     url =
-    'https://cors-anywhere.herokuapp.com/ https://europe-west3-serverless-devops-play.cloudfunctions.net/get-bookings';
+        'https://cors-anywhere.herokuapp.com/ https://europe-west3-serverless-devops-play.cloudfunctions.net/get-bookings';
   } else {
     url =
-    'https://europe-west3-serverless-devops-play.cloudfunctions.net/get-bookings';
+        'https://europe-west3-serverless-devops-play.cloudfunctions.net/get-bookings';
   }
 
   print("net.dart url: " + url);
@@ -138,10 +136,6 @@ Future<List<Booking>> createBookingsResponse() async {
     body: jsonEncode(<String, String>{}),
   );
   print("net.dart createVehiclesResponse() body: " + response.body);
-
-  // List<Vehicle> vehicles = MasterData.fromJson(json.decode(response.body)).vehicles;
-
-
 
   List<Booking> _bookings = new List<Booking>();
   for (var booking in json.decode(response.body)) {

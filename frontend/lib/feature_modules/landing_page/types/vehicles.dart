@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 class Vehicle {
   String DocId;
@@ -30,16 +29,23 @@ class Vehicle {
     print("types.dart Vehicle.fromJson:");
     print(jsonMap.toString());
 
+
+    Geopoint _geopoint = new Geopoint();
+    _geopoint.Latitude = double.tryParse(jsonMap["GeoPoint"]["latitude"].toString());
+    _geopoint.Longitude = double.tryParse(jsonMap["GeoPoint"]["longitude"].toString());
+
+    // Geopoint.fromJson(json.decode(jsonMap["GeoPoint"]
+    //     .toString()
+    //     .replaceAll("latitude", "\"latitude\"")
+    //     .replaceAll("longitude", "\"longitude\"")))
+
     return Vehicle(
       DocId: jsonMap["DocId"],
       Name: jsonMap["Name"],
       Type: jsonMap["Type"],
       Status: jsonMap["Status"],
       ParkingLot: jsonMap["ParkingLot"],
-      GeoPoint: Geopoint.fromJson(json.decode(jsonMap["GeoPoint"]
-          .toString()
-          .replaceAll("latitude", "\"latitude\"")
-          .replaceAll("longitude", "\"longitude\""))),
+      GeoPoint: _geopoint,
       Description: jsonMap["Description"],
     );
   }

@@ -82,6 +82,26 @@ class MasterData {
     );
   }
 
+  List<User> usersFromJson(Map<String, dynamic> jsonMap) {
+    print("types.dart usersFromJson:");
+
+    List<User> _users = new List<User>();
+    for (var _user in jsonMap["MasterData"]["Users"]) {
+      _users.add(User.fromJson(_user));
+    }
+    return _users;
+  }
+
+  String usersToJson() {
+    String jsonUsers = "";
+    for (var i = 0; i < users.length - 1; i++) {
+      jsonUsers += users[i].toJson() + ",";
+    }
+    jsonUsers += users[users.length - 1].toJson();
+
+    return "[" + jsonUsers + "]";
+  }
+
   String toJson() {
     String jsonUsers = "";
     for (var i = 0; i < users.length - 1; i++) {
