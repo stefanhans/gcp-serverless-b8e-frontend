@@ -3,6 +3,11 @@ import 'package:gpc_frontend/feature_modules/landing_page/bloc/landing_page_even
 import 'package:gpc_frontend/feature_modules/landing_page/bloc/landing_page_state.dart';
 import '../util/net.dart' as net;
 
+void printWrapped(String text) {
+  final pattern = new RegExp('.{1,800}'); // 800 is the size of each chunk
+  pattern.allMatches(text).forEach((match) => print(match.group(0)));
+}
+
 
 class LandingPageBloc extends Bloc<LandingPageEvent, LandingPageState> {
   LandingPageBloc() : super(LandingPageInitial(null));
@@ -16,8 +21,23 @@ class LandingPageBloc extends Bloc<LandingPageEvent, LandingPageState> {
 
   Stream<LandingPageState> _mapGetVehicles() async* {
     yield LandingPageLoading();
-     final response = await net.createMasterDataResponse();
-//    yield LandingPageInitial(response[0].GeoPoint.toString());
+
+    // MasterData
+    final response = await net.createMasterDataResponse();
     yield LandingPageInitial(response.toJson());
+
+    printWrapped("OUT: " + response.toJson());
+
+    // Users
+    // final response = await net.createUsersResponse();
+    // yield LandingPageInitial(response[0].toJson());
+
+    // // Vehicles
+    // final response = await net.createVehiclesResponse();
+    // yield LandingPageInitial(response[0].toJson());
+
+    // // Bookings
+    // final response = await net.createBookingsResponse();
+    // yield LandingPageInitial(response[0].toJson());
   }
 }
