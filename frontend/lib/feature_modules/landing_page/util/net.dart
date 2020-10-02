@@ -10,7 +10,7 @@ import './types.dart';
 String url;
 // String text = "";
 
-Future<List<Vehicle>> createMasterDataResponse() async {
+Future<MasterData> createMasterDataResponse() async {
   if (kIsWeb) {
     url =
         'https://cors-anywhere.herokuapp.com/ https://europe-west3-serverless-devops-play.cloudfunctions.net/get-vehicles';
@@ -33,27 +33,29 @@ Future<List<Vehicle>> createMasterDataResponse() async {
 
   MasterData masterData = MasterData.fromJson(json.decode(response.body));
 
-  List<Vehicle> vehicles = MasterData.fromJson(json.decode(response.body)).vehicles;
+  // List<Vehicle> vehicles = MasterData.fromJson(json.decode(response.body)).vehicles;
 
 
-  print("masterData: " + masterData.toJson());
-  print("net.dart vehicles.length: " + vehicles.length.toString());
-  print("net.dart vehicles.toString: " + vehicles.toString());
-  print("net.dart vehicles[0].toJson(): " + vehicles[0].toJson());
-
-  // for (var v in vehicles) {
-  //   print(v.toJson().toString());
-  //   print("----");
-  // }
-
-  print("net.dart vehicles.toJson: " + vehicles[0].toJson());
+  print("net.dart masterData.toJson(): " + masterData.toJson());
 
 
-  print("net.dart geopoint.toJson: " + vehicles[0].GeoPoint.toJson());
+  // print("net.dart vehicles.length: " + vehicles.length.toString());
+  // print("net.dart vehicles.toString: " + vehicles.toString());
+  // print("net.dart vehicles[0].toJson(): " + vehicles[0].toJson());
+  //
+  // // for (var v in vehicles) {
+  // //   print(v.toJson().toString());
+  // //   print("----");
+  // // }
+  //
+  // print("net.dart vehicles.toJson: " + vehicles[0].toJson());
+  //
+  //
+  // print("net.dart geopoint.toJson: " + vehicles[0].GeoPoint.toJson());
 
   if (response.statusCode == 200) {
-    return vehicles;
+    return masterData;
   } else {
-    return vehicles;
+    return masterData;
   }
 }
