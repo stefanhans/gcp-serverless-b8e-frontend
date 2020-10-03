@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:gpc_frontend/feature_modules/landing_page/bloc/landing_page_event.dart';
 import 'package:gpc_frontend/feature_modules/landing_page/bloc/landing_page_state.dart';
-import '../util/net.dart' as net;
+import '../backend/net.dart' as net;
 
 void printWrapped(String text) {
   final pattern = new RegExp('.{1,800}'); // 800 is the size of each chunk

@@ -1,52 +1,47 @@
-
 class Vehicle {
-  String DocId;
-  String Name;
-  String Type;
-  String Status;
-  String ParkingLot;
-  Geopoint GeoPoint;
-  String Description;
+  String docId;
+  String name;
+  String type;
+  String status;
+  String parkingLot;
+  GeoPoint geoPoint;
+  String description;
 
   Vehicle(
-      {String DocId,
-      String Name,
-      String Type,
-      String Status,
-      String ParkingLot,
-      Geopoint GeoPoint,
-      String Description}) {
-    this.DocId = DocId;
-    this.Name = Name;
-    this.Type = Type;
-    this.Status = Status;
-    this.ParkingLot = ParkingLot;
-    this.GeoPoint = GeoPoint;
-    this.Description = Description;
+      {String docId,
+      String name,
+      String type,
+      String status,
+      String parkingLot,
+      GeoPoint geoPoint,
+      String description}) {
+    this.docId = docId;
+    this.name = name;
+    this.type = type;
+    this.status = status;
+    this.parkingLot = parkingLot;
+    this.geoPoint = geoPoint;
+    this.description = description;
   }
 
   factory Vehicle.fromJson(Map<String, dynamic> jsonMap) {
     print("types.dart Vehicle.fromJson:");
     print(jsonMap.toString());
 
-
-    Geopoint _geopoint = new Geopoint();
-    _geopoint.Latitude = double.tryParse(jsonMap["GeoPoint"]["latitude"].toString());
-    _geopoint.Longitude = double.tryParse(jsonMap["GeoPoint"]["longitude"].toString());
-
-    // Geopoint.fromJson(json.decode(jsonMap["GeoPoint"]
-    //     .toString()
-    //     .replaceAll("latitude", "\"latitude\"")
-    //     .replaceAll("longitude", "\"longitude\"")))
+    GeoPoint _geopoint = new GeoPoint();
+    _geopoint.latitude =
+        double.tryParse(jsonMap["GeoPoint"]["latitude"].toString());
+    _geopoint.longitude =
+        double.tryParse(jsonMap["GeoPoint"]["longitude"].toString());
 
     return Vehicle(
-      DocId: jsonMap["DocId"],
-      Name: jsonMap["Name"],
-      Type: jsonMap["Type"],
-      Status: jsonMap["Status"],
-      ParkingLot: jsonMap["ParkingLot"],
-      GeoPoint: _geopoint,
-      Description: jsonMap["Description"],
+      docId: jsonMap["DocId"],
+      name: jsonMap["Name"],
+      type: jsonMap["Type"],
+      status: jsonMap["Status"],
+      parkingLot: jsonMap["ParkingLot"],
+      geoPoint: _geopoint,
+      description: jsonMap["Description"],
     );
   }
 
@@ -54,64 +49,64 @@ class Vehicle {
     return "{" +
         "\"DocId\": " +
         "\"" +
-        this.DocId +
+        this.docId +
         "\"" +
         "," +
         "\"Name\": " +
         "\"" +
-        this.Name +
+        this.name +
         "\"" +
         "," +
         "\"Type\": " +
         "\"" +
-        this.Type +
+        this.type +
         "\"" +
         "," +
         "\"Status\": " +
         "\"" +
-        this.Status +
+        this.status +
         "\"" +
         "," +
         "\"ParkingLot\": " +
         "\"" +
-        this.ParkingLot +
+        this.parkingLot +
         "\"" +
         "," +
-        "\"Geopoint\": " +
-        this.GeoPoint.toJson() +
+        "\"GeoPoint\": " +
+        this.geoPoint.toJson() +
         ",\"Description\": " +
         "\"" +
-        this.Description +
+        this.description +
         "\"" +
         "}";
   }
 }
 
-class Geopoint {
-  double Latitude;
-  double Longitude;
+class GeoPoint {
+  double latitude;
+  double longitude;
 
-  Geopoint({double Latitude, double Longitude}) {
-    this.Latitude = Latitude;
-    this.Longitude = Longitude;
+  GeoPoint({double latitude, double longitude}) {
+    this.latitude = latitude;
+    this.longitude = longitude;
   }
 
-  factory Geopoint.fromJson(Map<String, dynamic> json) {
-    print("types.dart Geopoint:");
+  factory GeoPoint.fromJson(Map<String, dynamic> json) {
+    print("types.dart GeoPoint:");
     print(json.toString());
 
-    return Geopoint(
-        Latitude: double.parse(json["latitude"].toString()),
-        Longitude: double.parse(json["longitude"].toString()));
+    return GeoPoint(
+        latitude: double.parse(json["latitude"].toString()),
+        longitude: double.parse(json["longitude"].toString()));
   }
 
   String toJson() {
     return "{" +
         "\"latitude\": " +
-        this.Latitude.toString() +
+        this.latitude.toString() +
         ","
             "\"longitude\": " +
-        this.Longitude.toString() +
+        this.longitude.toString() +
         "}";
   }
 }

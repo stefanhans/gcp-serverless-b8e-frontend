@@ -1,50 +1,39 @@
 // Validate JSON https://jsonlint.com/
 
 class Booking {
-  String DocId;
-  String User;
-  String Vehicle;
-  String VehicleType;
-  String VehicleStatus;
-  String ParkingLot;
-  DateTime From;
-  DateTime To;
-  String Status;
-  DateTime StatusTime;
+  String docId;
+  String user;
+  String vehicle;
+  String vehicleType;
+  String vehicleStatus;
+  String parkingLot;
+  DateTime from;
+  DateTime to;
+  String status;
+  DateTime statusTime;
 
   Booking(
-      {String DocId,
-      String User,
-      String Vehicle,
-      String VehicleType,
-      String VehicleStatus,
-      String ParkingLot,
-      DateTime From,
-      DateTime To,
-      String Status,
-      DateTime StatusTime}) {
-    this.DocId = DocId;
-    this.User = User;
-    this.Vehicle = Vehicle;
-    this.VehicleType = VehicleType;
-    this.VehicleStatus = VehicleStatus;
-    this.ParkingLot = ParkingLot;
-    this.From = From;
-    this.To = To;
-    this.Status = Status;
-    this.StatusTime = StatusTime;
+      {String docId,
+      String user,
+      String vehicle,
+      String vehicleType,
+      String vehicleStatus,
+      String parkingLot,
+      DateTime from,
+      DateTime to,
+      String status,
+      DateTime statusTime}) {
+    this.docId = docId;
+    this.user = user;
+    this.vehicle = vehicle;
+    this.vehicleType = vehicleType;
+    this.vehicleStatus = vehicleStatus;
+    this.parkingLot = parkingLot;
+    this.from = from;
+    this.to = to;
+    this.status = status;
+    this.statusTime = statusTime;
   }
-
-  // "DocId": "ZbAvWNPqKBrVCPcexz1Y",
-  // "User": "Alice",
-  // "Vehicle": "Tesla Deluxe",
-  // "VehicleType": "eCar",
-  // "VehicleStatus": "ready",
-  // "ParkingLot": "Joe's Garage",
-  // "From": "2020-09-19T15:05:48.212968Z",
-  // "To": "2020-09-19T17:05:48.212968Z",
-  // "Status": "request",
-  // "StatusTime": "2020-09-19T15:05:48.212968Z"
 
   factory Booking.fromJson(Map<String, dynamic> jsonMap) {
     print("types.dart Booking.fromJson:");
@@ -55,16 +44,16 @@ class Booking {
     print("XXXX: " + from.toIso8601String());
 
     return Booking(
-      DocId: jsonMap["DocId"],
-      User: jsonMap["User"],
-      Vehicle: jsonMap["Vehicle"],
-      VehicleType: jsonMap["VehicleType"],
-      VehicleStatus: jsonMap["VehicleStatus"],
-      ParkingLot: jsonMap["ParkingLot"],
-      From: DateTime.parse(jsonMap["From"]),
-      To: DateTime.parse(jsonMap["To"]),
-      Status: jsonMap["Status"],
-      StatusTime: DateTime.parse(jsonMap["StatusTime"]),
+      docId: jsonMap["DocId"],
+      user: jsonMap["User"],
+      vehicle: jsonMap["Vehicle"],
+      vehicleType: jsonMap["VehicleType"],
+      vehicleStatus: jsonMap["VehicleStatus"],
+      parkingLot: jsonMap["ParkingLot"],
+      from: DateTime.parse(jsonMap["From"]),
+      to: DateTime.parse(jsonMap["To"]),
+      status: jsonMap["Status"],
+      statusTime: DateTime.parse(jsonMap["StatusTime"]),
     );
   }
 
@@ -72,52 +61,52 @@ class Booking {
     return "{" +
         "\"DocId\": " +
         "\"" +
-        this.DocId +
+        this.docId +
         "\"" +
         "," +
         "\"User\": " +
         "\"" +
-        this.User +
+        this.user +
         "\"" +
         "," +
         "\"Vehicle\": " +
         "\"" +
-        this.Vehicle +
+        this.vehicle +
         "\"" +
         "," +
         "\"VehicleType\": " +
         "\"" +
-        this.VehicleType +
+        this.vehicleType +
         "\"" +
         "," +
         "\"VehicleStatus\": " +
         "\"" +
-        this.VehicleStatus +
+        this.vehicleStatus +
         "\"" +
         "," +
         "\"ParkingLot\": " +
         "\"" +
-        this.ParkingLot +
+        this.parkingLot +
         "\"" +
         "," +
         "\"From\": " +
         "\"" +
-        this.From.toIso8601String() +
+        this.from.toIso8601String() +
         "\"" +
         "," +
         "\"To\": " +
         "\"" +
-        this.To.toIso8601String() +
+        this.to.toIso8601String() +
         "\"" +
         "," +
         "\"Status\": " +
         "\"" +
-        this.Status +
+        this.status +
         "\"" +
         "," +
         "\"StatusTime\": " +
         "\"" +
-        this.StatusTime.toIso8601String() +
+        this.statusTime.toIso8601String() +
         "\"" +
         "}";
   }

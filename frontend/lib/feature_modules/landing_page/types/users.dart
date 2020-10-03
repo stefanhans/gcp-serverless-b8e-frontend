@@ -1,22 +1,22 @@
 
 class User {
-  String DocId;
-  String Name;
-  String Type;
-  String Status;
-  String Description;
+  String docId;
+  String name;
+  String type;
+  String status;
+  String description;
 
   User(
-      {String DocId,
-        String Name,
-        String Type,
-        String Status,
-        String Description}) {
-    this.DocId = DocId;
-    this.Name = Name;
-    this.Type = Type;
-    this.Status = Status;
-    this.Description = Description;
+      {String docId,
+        String name,
+        String type,
+        String status,
+        String description}) {
+    this.docId = docId;
+    this.name = name;
+    this.type = type;
+    this.status = status;
+    this.description = description;
   }
 
   factory User.fromJson(Map<String, dynamic> jsonMap) {
@@ -24,11 +24,11 @@ class User {
     print(jsonMap.toString());
 
     return User(
-      DocId: jsonMap["DocId"],
-      Name: jsonMap["Name"],
-      Type: jsonMap["Type"],
-      Status: jsonMap["Status"],
-      Description: jsonMap["Description"],
+      docId: jsonMap["DocId"],
+      name: jsonMap["Name"],
+      type: jsonMap["Type"],
+      status: jsonMap["Status"],
+      description: jsonMap["Description"],
     );
   }
 
@@ -36,27 +36,27 @@ class User {
     return "{" +
         "\"DocId\": " +
         "\"" +
-        this.DocId +
+        this.docId +
         "\"" +
         "," +
         "\"Name\": " +
         "\"" +
-        this.Name +
+        this.name +
         "\"" +
         "," +
         "\"Type\": " +
         "\"" +
-        this.Type +
+        this.type +
         "\"" +
         "," +
         "\"Status\": " +
         "\"" +
-        this.Status +
+        this.status +
         "\"" +
         "," +
         "\"Description\": " +
         "\"" +
-        this.Description +
+        this.description +
         "\"" +
         "}";
   }
