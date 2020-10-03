@@ -11,6 +11,9 @@ import 'package:gpc_frontend/feature_modules/landing_page/bloc/landing_page_stat
 class LandingPageWidget extends StatelessWidget {
   final String appBarTitle = 'Network Request';
 
+  var _btnFontSize = 12.0;
+  var _txtFontSize = 12.0;
+
   @override
   Widget build(BuildContext context) {
     final bloc = LandingPageBloc();
@@ -37,7 +40,7 @@ class LandingPageWidget extends StatelessWidget {
             children: <Widget>[
               Container(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.7,
+                height: MediaQuery.of(context).size.height * 0.6,
                 child: Card(
                   color: Theme.of(context).primaryColorLight,
                   child: Padding(
@@ -55,14 +58,65 @@ class LandingPageWidget extends StatelessWidget {
                   builder: (context, state) {
                     return RaisedButton(
                       onPressed: state is LandingPageInitial
+                          ? () => bloc.add(GetMasterData())
+                          : null,
+                      child: Text(
+                        state is LandingPageLoading
+                            ? 'Awaiting Master Data'
+                            : 'Load Master Data',
+                        style: TextStyle(
+                          fontSize: _btnFontSize,
+                        ),
+                      ),
+                    );
+                  }),
+              BlocBuilder(
+                  cubit: bloc,
+                  builder: (context, state) {
+                    return RaisedButton(
+                      onPressed: state is LandingPageInitial
+                          ? () => bloc.add(GetUsers())
+                          : null,
+                      child: Text(
+                        state is LandingPageLoading
+                            ? 'Awaiting Users'
+                            : 'Load Users',
+                        style: TextStyle(
+                          fontSize: _btnFontSize,
+                        ),
+                      ),
+                    );
+                  }),
+              BlocBuilder(
+                  cubit: bloc,
+                  builder: (context, state) {
+                    return RaisedButton(
+                      onPressed: state is LandingPageInitial
                           ? () => bloc.add(GetVehicles())
                           : null,
                       child: Text(
                         state is LandingPageLoading
-                            ? 'Awaiting Response'
-                            : 'Send Request',
+                            ? 'Awaiting Vehicles'
+                            : 'Load Vehicles',
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: _btnFontSize,
+                        ),
+                      ),
+                    );
+                  }),
+              BlocBuilder(
+                  cubit: bloc,
+                  builder: (context, state) {
+                    return RaisedButton(
+                      onPressed: state is LandingPageInitial
+                          ? () => bloc.add(GetBookings())
+                          : null,
+                      child: Text(
+                        state is LandingPageLoading
+                            ? 'Awaiting Bookings'
+                            : 'Load Bookings',
+                        style: TextStyle(
+                          fontSize: _btnFontSize,
                         ),
                       ),
                     );
@@ -86,7 +140,7 @@ class LandingPageWidget extends StatelessWidget {
         state.content ?? 'No Content',
         textDirection: TextDirection.ltr,
         style: TextStyle(
-          fontSize: 16.0,
+          fontSize: _txtFontSize,
           color: theme.primaryColorDark,
         ),
         maxLines: 30,

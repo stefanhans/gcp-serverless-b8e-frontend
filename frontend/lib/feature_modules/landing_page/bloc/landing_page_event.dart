@@ -6,4 +6,10 @@ class LandingPageEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class GetMasterData extends LandingPageEvent {}
+
+class GetUsers extends LandingPageEvent {}
+
 class GetVehicles extends LandingPageEvent {}
+
+class GetBookings extends LandingPageEvent {}

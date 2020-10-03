@@ -102,6 +102,26 @@ class MasterData {
     return "[" + jsonUsers + "]";
   }
 
+  String vehiclesToJson() {
+    String jsonVehicles = "";
+    for (var i = 0; i < vehicles.length - 1; i++) {
+      jsonVehicles += vehicles[i].toJson() + ",";
+    }
+    jsonVehicles += vehicles[vehicles.length - 1].toJson();
+
+    return "[" + jsonVehicles + "]";
+  }
+
+  String bookingsToJson() {
+    String jsonBookings = "";
+    for (var i = 0; i < bookings.length - 1; i++) {
+      jsonBookings += bookings[i].toJson() + ",";
+    }
+    jsonBookings += bookings[bookings.length - 1].toJson();
+
+    return "[" + jsonBookings + "]";
+  }
+
   String toJson() {
     String jsonUsers = "";
     for (var i = 0; i < users.length - 1; i++) {
