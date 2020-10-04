@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:gpc_frontend/feature_modules/landing_page/bloc/landing_page_bloc.dart';
-import 'package:gpc_frontend/feature_modules/landing_page/bloc/landing_page_event.dart';
-import 'package:gpc_frontend/feature_modules/landing_page/bloc/landing_page_state.dart';
+import 'package:gpc_frontend/feature_modules/landing_page/bloc/bloc.dart';
 
 class LandingPageWidget extends StatelessWidget {
   final String appBarTitle = 'Network Request';
