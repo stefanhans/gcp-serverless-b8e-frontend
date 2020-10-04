@@ -14,7 +14,7 @@ class LandingPageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = LandingPageBloc();
-    return Scaffold(
+    return Scaffold(  
       appBar: AppBar(
         title: Text(
           appBarTitle,

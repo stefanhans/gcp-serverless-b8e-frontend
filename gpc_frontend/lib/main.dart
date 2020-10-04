@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:gpc_frontend/feature_modules/landing_page/landing_page.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(GcpApp());
 }
 
-class MyApp extends StatelessWidget {
+class GcpApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Landing Page Demo',
+      title: 'Google Cloud Plattform App',
       theme: ThemeData(
         primaryColor: Colors.blueGrey[300],
         primaryColorLight: Colors.blueGrey[100],

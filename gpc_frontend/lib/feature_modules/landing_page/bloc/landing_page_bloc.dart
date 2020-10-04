@@ -1,10 +1,12 @@
 import 'package:bloc/bloc.dart';
-import 'package:gpc_frontend/feature_modules/landing_page/bloc/landing_page_event.dart';
-import 'package:gpc_frontend/feature_modules/landing_page/bloc/landing_page_state.dart';
-import '../util/net.dart' as net;
+import 'package:meta/meta.dart';
+import 'package:gpc_frontend/feature_modules/landing_page/bloc/bloc.dart';
+import 'package:gpc_frontend/utility/network/network.dart' as net;
 
 
 class LandingPageBloc extends Bloc<LandingPageEvent, LandingPageState> {
+  @visibleForTesting
+  // Future<String> Function() get vehicleNetworkCall => () => net.createTransaltionResponse();
   LandingPageBloc() : super(LandingPageInitial(null));
 
   @override
@@ -16,29 +18,29 @@ class LandingPageBloc extends Bloc<LandingPageEvent, LandingPageState> {
 
   Stream<LandingPageState> _mapGetVehicles() async* {
     yield LandingPageLoading();
-//    final response = await Future.delayed(const Duration(seconds: 3), () => '''{
-//    "glossary": {
-//        "title": "example glossary",
-//		"GlossDiv": {
-//            "title": "S",
-//			"GlossList": {
-//                "GlossEntry": {
-//                    "ID": "SGML",
-//					"SortAs": "SGML",
-//					"GlossTerm": "Standard Generalized Markup Language",
-//					"Acronym": "SGML",
-//					"Abbrev": "ISO 8879:1986",
-//					"GlossDef": {
-//                        "para": "A meta-markup language, used to create markup languages such as DocBook.",
-//						"GlossSeeAlso": ["GML", "XML"]
-//                    },
-//					"GlossSee": "markup"
-//                }
-//            }
-//        }
-//    }
-//}''');
-     final response = await net.createMasterDataResponse();
+    // final response = await vehicleNetworkCall();
+    final response = '''{
+    "glossary": {
+        "title": "example glossary",
+		"GlossDiv": {
+            "title": "S",
+			"GlossList": {
+                "GlossEntry": {
+                    "ID": "SGML",
+					"SortAs": "SGML",
+					"GlossTerm": "Standard Generalized Markup Language",
+					"Acronym": "SGML",
+					"Abbrev": "ISO 8879:1986",
+					"GlossDef": {
+                        "para": "A meta-markup language, used to create markup languages such as DocBook.",
+						"GlossSeeAlso": ["GML", "XML"]
+                    },
+					"GlossSee": "markup"
+                }
+            }
+        }
+    }
+}''';
     yield LandingPageInitial(response);
   }
 }
