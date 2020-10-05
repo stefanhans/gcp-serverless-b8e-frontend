@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:frontend/feature_modules/landing_page/types/types.dart';
+import '../types/types.dart';
 import 'package:http/http.dart' as http;
 
 // //kIsWeb documentation: https://api.flutter.dev/flutter/foundation/kIsWeb-constant.html
