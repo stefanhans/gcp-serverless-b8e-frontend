@@ -1,9 +1,14 @@
 import 'package:flutter/widgets.dart';
 
 class CatalogListVehicleImage extends StatelessWidget {
-  final Future<ImageProvider> netWorkImage;
+  final double height;
+  final Future<ImageProvider> futureImage;
+  static const minimumHight = 15.0;
 
-  CatalogListVehicleImage(this.netWorkImage);
+  CatalogListVehicleImage({
+    this.height,
+    this.futureImage,
+  }) : assert(height != null && height > minimumHight);
 
   @override
   Widget build(BuildContext context) {
@@ -11,9 +16,9 @@ class CatalogListVehicleImage extends StatelessWidget {
       'assets/gif/loadingCar.gif',
     );
     return FutureBuilder(
-      future: netWorkImage,
+      future: futureImage,
       builder: (_, snapshot) => Image(
-        height: 125,
+        height: height,
         image: snapshot?.data ?? initialImage,
       ),
       initialData: initialImage,

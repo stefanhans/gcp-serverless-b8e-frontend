@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/features/catalog_feature/src/catalog_feature.dart';
+
+import 'features/catalog_feature/src/widget/catalog_list_widget.dart';
+import 'routes/routes.dart';
 
 void main() {
   runApp(BookAShare());
@@ -12,10 +16,26 @@ class BookAShare extends StatelessWidget {
           'BookAShare', //TODO: replace hard coded strings with references to SID's
       theme: ThemeData(
         primaryColor: Colors.amber,
-        canvasColor: Colors.blueGrey.shade800,
+        primaryColorDark: Colors.amber.shade900,
+        primaryColorLight: Colors.amber.shade100,
+        textTheme: TextTheme(
+          headline1: TextStyle(
+            color: Colors.amber.shade900,
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
+          headline6: TextStyle(
+            color: Colors.amber.shade900,
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
+        ),
+        errorColor: Colors.red.shade900,
+        canvasColor: Colors.blueGrey.shade700,
         accentColor: Colors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         backgroundColor: Colors.amber.shade200,
+        scaffoldBackgroundColor: Colors.amber.shade200
       ),
       home: MainTabPageWidget(),
     );
@@ -29,7 +49,7 @@ class MainTabPageWidget extends StatefulWidget {
     mainTaps.tapViews.addAll([
       //TODO: fill with actual features
       SizedBox.shrink(),
-      SizedBox.shrink(),
+      CatalogListEntryPoint(),
       SizedBox.shrink(),
     ]);
     return mainTaps;

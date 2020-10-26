@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/features/catalog_feature/src/catalog_feature_page_route.dart';
 import 'package:frontend/features/catalog_feature/src/widget/catalog_list_vehicle_image.dart';
 
 import '../catalog_feature.dart';
@@ -39,7 +40,9 @@ class CatalogListCard extends StatelessWidget {
           child: InkWell(
             onTap: () {
               //TODO: replace with push for details of vehicle
-              showAboutDialog(context: context);
+              Navigator.of(context).push(
+                CatalogFeaturePageRoute.detail(data),
+              );
             },
             child: Center(
               child: Padding(
@@ -54,7 +57,9 @@ class CatalogListCard extends StatelessWidget {
                     Text(data.subtitle),
                     SizedBox.fromSize(size: Size.fromHeight(4.0)),
                     CatalogListVehicleImage(
-                      () async { //TODO: replace with network image that loads
+                      height: 125,
+                      futureImage: () async {
+                        //TODO: replace with network image that loads
                         await Future.delayed(const Duration(seconds: 5));
                         return AssetImage('assets/photo/vehicleEmpty.png');
                       }.call(),
