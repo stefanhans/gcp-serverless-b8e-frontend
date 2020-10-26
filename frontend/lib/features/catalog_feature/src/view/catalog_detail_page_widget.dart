@@ -16,8 +16,11 @@ class CatalogDetailPageWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: theme.canvasColor,
         leading: InkWell(
-        splashColor: theme.primaryColorDark,
-          child: Icon(Icons.arrow_back,color: theme.primaryColor,),
+          splashColor: theme.primaryColorDark,
+          child: Icon(
+            Icons.arrow_back,
+            color: theme.primaryColor,
+          ),
           onTap: Navigator.of(context).pop,
         ),
         centerTitle: true,
@@ -26,7 +29,35 @@ class CatalogDetailPageWidget extends StatelessWidget {
           style: theme.textTheme.headline1,
         ),
       ),
-      body: Center(child: CatalogListVehicleImage(height: 200,),),
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        child: Column(
+          children: <Widget>[
+            Padding(
+                padding: EdgeInsets.only(
+                  left: 15,
+                  right: 15,
+                  bottom: 10,
+                ),
+                child: CatalogListVehicleImage(
+                  height: 300,
+                  futureImage: () async {
+                    //TODO: replace with network image that loads
+                    await Future.delayed(const Duration(seconds: 5));
+                    return AssetImage('assets/photo/vehicleEmpty.png');
+                  }.call(),
+                )),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 18),
+              child: Text(
+                data.subtitle,
+                style: theme.textTheme.subtitle1,
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
