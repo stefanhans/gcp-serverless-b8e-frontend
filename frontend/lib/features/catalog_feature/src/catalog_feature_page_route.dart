@@ -3,6 +3,7 @@ import 'package:frontend/features/catalog_feature/src/data/catalog_arguments.dar
 import 'package:frontend/features/catalog_feature/src/data/data.dart';
 import 'package:frontend/features/catalog_feature/src/view/view.dart';
 import 'package:frontend/routes/routes.dart';
+import 'package:frontend/theme.dart';
 
 import 'view/catalog_detail_page_widget.dart';
 
@@ -49,7 +50,7 @@ class CatalogListEntryPoint extends StatelessWidget {
           );
         }
       },
-      theme: Theme.of(context),
+      theme: mainTheme,
     );
   }
 }

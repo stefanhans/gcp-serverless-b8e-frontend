@@ -36,7 +36,7 @@ class CatalogListCard extends StatelessWidget {
       title: Container(
         height: 250,
         child: Card(
-          color: theme.canvasColor,
+          color: theme.cardColor,
           child: InkWell(
             onTap: () {
               //TODO: replace with push for details of vehicle

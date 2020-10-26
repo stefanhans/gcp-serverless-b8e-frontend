@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:frontend/features/catalog_feature/src/data/data.dart';
+import 'package:frontend/features/catalog_feature/src/widget/widget.dart';
 
 class CatalogDetailPageWidget extends StatelessWidget {
   final CatalogListData data;
@@ -11,15 +12,21 @@ class CatalogDetailPageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.accentColor,
       appBar: AppBar(
+        backgroundColor: theme.canvasColor,
         leading: InkWell(
-          child: Icon(Icons.close),
+        splashColor: theme.primaryColorDark,
+          child: Icon(Icons.arrow_back,color: theme.primaryColor,),
           onTap: Navigator.of(context).pop,
         ),
         centerTitle: true,
-        title: Text(data.title),
+        title: Text(
+          data.title,
+          style: theme.textTheme.headline1,
+        ),
       ),
+      body: Center(child: CatalogListVehicleImage(height: 200,),),
     );
   }
 }
