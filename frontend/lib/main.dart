@@ -46,8 +46,8 @@ class _MainTaps extends State<MainTabPageWidget> {
           children: tapViews,
         ),
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: theme.canvasColor,
-          selectedItemColor: theme.primaryColor,
+          backgroundColor: theme.primaryColorDark,
+          selectedItemColor: theme.highlightColor,
           unselectedItemColor: theme.accentColor,
           currentIndex: tabIndex,
           onTap: (index) {
@@ -62,7 +62,7 @@ class _MainTaps extends State<MainTabPageWidget> {
               title: Text('Bookings'),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.search),
+              icon: Icon(Icons.pages),//TODO: find better icon
               title: Text('Browse'),
             ),
             BottomNavigationBarItem(

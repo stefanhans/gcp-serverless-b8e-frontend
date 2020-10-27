@@ -10,6 +10,7 @@ class CatalogList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
+        
         CatalogListCard(CatalogListData.dummyData(
           'First Car',
           'This is some long really unnecessary subtitle, like really it is just too long!',

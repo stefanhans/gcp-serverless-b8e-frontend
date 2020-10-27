@@ -19,7 +19,7 @@ class CatalogDetailPageWidget extends StatelessWidget {
           splashColor: theme.primaryColorDark,
           child: Icon(
             Icons.arrow_back,
-            color: theme.primaryColor,
+            color: theme.highlightColor,
           ),
           onTap: Navigator.of(context).pop,
         ),
