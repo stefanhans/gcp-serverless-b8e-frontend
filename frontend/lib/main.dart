@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/features/catalog_feature/src/catalog_feature.dart';
+import 'package:frontend/theme.dart';
 
 void main() {
   runApp(BookAShare());
@@ -10,13 +12,7 @@ class BookAShare extends StatelessWidget {
     return MaterialApp(
       title:
           'BookAShare', //TODO: replace hard coded strings with references to SID's
-      theme: ThemeData(
-        primaryColor: Colors.amber,
-        canvasColor: Colors.blueGrey.shade800,
-        accentColor: Colors.white,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        backgroundColor: Colors.amber.shade200,
-      ),
+      theme: mainTheme,
       home: MainTabPageWidget(),
     );
   }
@@ -29,7 +25,7 @@ class MainTabPageWidget extends StatefulWidget {
     mainTaps.tapViews.addAll([
       //TODO: fill with actual features
       SizedBox.shrink(),
-      SizedBox.shrink(),
+      CatalogListEntryPoint(),
       SizedBox.shrink(),
     ]);
     return mainTaps;
@@ -50,8 +46,8 @@ class _MainTaps extends State<MainTabPageWidget> {
           children: tapViews,
         ),
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: theme.canvasColor,
-          selectedItemColor: theme.primaryColor,
+          backgroundColor: theme.primaryColorDark,
+          selectedItemColor: theme.highlightColor,
           unselectedItemColor: theme.accentColor,
           currentIndex: tabIndex,
           onTap: (index) {
@@ -66,7 +62,7 @@ class _MainTaps extends State<MainTabPageWidget> {
               title: Text('Bookings'),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.search),
+              icon: Icon(Icons.pages),//TODO: find better icon
               title: Text('Browse'),
             ),
             BottomNavigationBarItem(
