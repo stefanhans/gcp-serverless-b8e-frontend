@@ -9,18 +9,19 @@ import 'package:http/http.dart' as http;
 
 // Todo: Create class for network stuff
 
-String url;
-// String text = "";
+String getUrl() {
+  const String urlForWeb = 'https://cors-anywhere.herokuapp.com/ https://europe-west3-serverless-devops-play.cloudfunctions.net/get-users';
+  const String urlForDefault = 'https://europe-west3-serverless-devops-play.cloudfunctions.net/get-users';
+
+  return kIsWeb ? urlForWeb : urlForDefault;
+}
+
+String url = getUrl();
+
+
 
 Future<MasterData> createMasterDataResponse() async {
   print("CALL: util/net.dart createMasterDataResponse()");
-  if (kIsWeb) {
-    url =
-        'https://cors-anywhere.herokuapp.com/ https://europe-west3-serverless-devops-play.cloudfunctions.net/get-master-data';
-  } else {
-    url =
-        'https://europe-west3-serverless-devops-play.cloudfunctions.net/get-master-data';
-  }
 
   print("net.dart url: " + url);
 
@@ -38,23 +39,18 @@ Future<MasterData> createMasterDataResponse() async {
 
   print("ZZZZ: " + _masterData.usersToJson());
 
-  if (response.statusCode == 200) {
-    return _masterData;
-  } else {
-    return _masterData;
-  }
+  // Todo: Error handling
+  // if (response.statusCode == 200) {
+  //   return _masterData;
+  // } else {
+  //   return _masterData;
+  // }
+  return _masterData;
 }
 
 //
 Future<List<User>> createUsersResponse() async {
   print("CALL: util/net.dart createUsersResponse()");
-  if (kIsWeb) {
-    url =
-        'https://cors-anywhere.herokuapp.com/ https://europe-west3-serverless-devops-play.cloudfunctions.net/get-users';
-  } else {
-    url =
-        'https://europe-west3-serverless-devops-play.cloudfunctions.net/get-users';
-  }
 
   print("net.dart url: " + url);
 
@@ -74,22 +70,17 @@ Future<List<User>> createUsersResponse() async {
 
   // List<User> users = MasterData.fromJson(json.decode(response.body)).users;
 
-  if (response.statusCode == 200) {
-    return _users;
-  } else {
-    return _users;
-  }
+  // Todo: Error handling
+  // if (response.statusCode == 200) {
+  //   return _masterData;
+  // } else {
+  //   return _masterData;
+  // }
+  return _users;
 }
 
 Future<List<Vehicle>> createVehiclesResponse() async {
   print("CALL: util/net.dart createVehiclesResponse()");
-  if (kIsWeb) {
-    url =
-        'https://cors-anywhere.herokuapp.com/ https://europe-west3-serverless-devops-play.cloudfunctions.net/get-vehicles';
-  } else {
-    url =
-        'https://europe-west3-serverless-devops-play.cloudfunctions.net/get-vehicles';
-  }
 
   print("net.dart url: " + url);
 
@@ -109,24 +100,19 @@ Future<List<Vehicle>> createVehiclesResponse() async {
     _vehicles.add(Vehicle.fromJson(vehicle));
   }
 
-  if (response.statusCode == 200) {
-    return _vehicles;
-  } else {
-    return _vehicles;
-  }
+  // Todo: Error handling
+  // if (response.statusCode == 200) {
+  //   return _vehicles;
+  // } else {
+  //   return _vehicles;
+  // }
+  return _vehicles;
 }
 
 //
 
 Future<List<Booking>> createBookingsResponse() async {
   print("CALL: util/net.dart createBookingsResponse()");
-  if (kIsWeb) {
-    url =
-        'https://cors-anywhere.herokuapp.com/ https://europe-west3-serverless-devops-play.cloudfunctions.net/get-bookings';
-  } else {
-    url =
-        'https://europe-west3-serverless-devops-play.cloudfunctions.net/get-bookings';
-  }
 
   print("net.dart url: " + url);
 
@@ -144,9 +130,11 @@ Future<List<Booking>> createBookingsResponse() async {
     _bookings.add(Booking.fromJson(booking));
   }
 
-  if (response.statusCode == 200) {
-    return _bookings;
-  } else {
-    return _bookings;
-  }
+  // Todo: Error handling
+  // if (response.statusCode == 200) {
+  //   return _bookings;
+  // } else {
+  //   return _bookings;
+  // }
+  return _bookings;
 }
