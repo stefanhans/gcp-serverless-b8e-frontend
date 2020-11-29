@@ -59,15 +59,15 @@ class _MainTaps extends State<MainTabPageWidget> {
             //TODO: replace hard coded titles with references to SID's
             BottomNavigationBarItem(
               icon: Icon(Icons.bookmark),
-              title: Text('Bookings'),
+              label: 'Bookings',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.pages),//TODO: find better icon
-              title: Text('Browse'),
+              label: 'Browse',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
-              title: Text('Profile'),
+              label: 'Profile',
             ),
           ],
         ),
