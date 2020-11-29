@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/features/catalog_feature/src/catalog_feature.dart';
+import 'package:frontend/features/debug_feature/src/view/debug_page_widget.dart';
 import 'package:frontend/theme.dart';
+
+import 'features/debug_feature/src/widget/debug_entry_button.dart';
 
 void main() {
   runApp(BookAShare());
@@ -26,7 +29,7 @@ class MainTabPageWidget extends StatefulWidget {
       //TODO: fill with actual features
       SizedBox.shrink(),
       CatalogListEntryPoint(),
-      SizedBox.shrink(),
+      Center(child: DebugEntryButton(() async => "Hello Debug Screen World", buttonName: "Stefan's command",))
     ]);
     return mainTaps;
   }
