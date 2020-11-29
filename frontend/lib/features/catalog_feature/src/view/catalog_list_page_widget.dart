@@ -4,6 +4,7 @@ import 'package:frontend/features/catalog_feature/src/bloc/catalog_search/bloc.d
 import 'package:frontend/features/catalog_feature/src/bloc/catalog_search/catalog_search_bloc.dart';
 import 'package:frontend/features/catalog_feature/src/widget/catalog_list_search_bar.dart';
 import 'package:frontend/features/catalog_feature/src/widget/widget.dart';
+import 'package:frontend/features/debug_feature/src/widget/debug_entry_button.dart';
 import 'package:frontend/theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
