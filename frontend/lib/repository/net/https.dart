@@ -10,15 +10,15 @@ import 'package:http/http.dart' as http;
 // Todo: Create class for network stuff
 
 String getUrl() {
-  const String urlForWeb = 'https://cors-anywhere.herokuapp.com/ https://europe-west3-serverless-devops-play.cloudfunctions.net/get-users';
-  const String urlForDefault = 'https://europe-west3-serverless-devops-play.cloudfunctions.net/get-users';
+  const String urlForWeb =
+      'https://cors-anywhere.herokuapp.com/ https://europe-west3-serverless-devops-play.cloudfunctions.net/get-users';
+  const String urlForDefault =
+      'https://europe-west3-serverless-devops-play.cloudfunctions.net/get-users';
 
   return kIsWeb ? urlForWeb : urlForDefault;
 }
 
 String url = getUrl();
-
-
 
 Future<MasterData> createMasterDataResponse() async {
   print("CALL: util/net.dart createMasterDataResponse()");
@@ -39,13 +39,12 @@ Future<MasterData> createMasterDataResponse() async {
 
   print("ZZZZ: " + _masterData.usersToJson());
 
-  // Todo: Error handling
-  // if (response.statusCode == 200) {
-  //   return _masterData;
-  // } else {
-  //   return _masterData;
-  // }
-  return _masterData;
+  if (response.statusCode == 200) {
+    return _masterData;
+  } else {
+    //Todo: add error handling
+    return _masterData;
+  }
 }
 
 //
@@ -70,13 +69,12 @@ Future<List<User>> createUsersResponse() async {
 
   // List<User> users = MasterData.fromJson(json.decode(response.body)).users;
 
-  // Todo: Error handling
-  // if (response.statusCode == 200) {
-  //   return _masterData;
-  // } else {
-  //   return _masterData;
-  // }
-  return _users;
+  if (response.statusCode == 200) {
+    return _users;
+  } else {
+    // Todo: add error handling
+    return _users;
+  }
 }
 
 Future<List<Vehicle>> createVehiclesResponse() async {
@@ -100,13 +98,12 @@ Future<List<Vehicle>> createVehiclesResponse() async {
     _vehicles.add(Vehicle.fromJson(vehicle));
   }
 
-  // Todo: Error handling
-  // if (response.statusCode == 200) {
-  //   return _vehicles;
-  // } else {
-  //   return _vehicles;
-  // }
-  return _vehicles;
+  if (response.statusCode == 200) {
+    return _vehicles;
+  } else {
+    // Todo: add error handling
+    return _vehicles;
+  }
 }
 
 //
@@ -130,11 +127,10 @@ Future<List<Booking>> createBookingsResponse() async {
     _bookings.add(Booking.fromJson(booking));
   }
 
-  // Todo: Error handling
-  // if (response.statusCode == 200) {
-  //   return _bookings;
-  // } else {
-  //   return _bookings;
-  // }
-  return _bookings;
+  if (response.statusCode == 200) {
+    return _bookings;
+  } else {
+    // Todo: add error handling
+    return _bookings;
+  }
 }
