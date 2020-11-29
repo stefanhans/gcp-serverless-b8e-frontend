@@ -10,9 +10,9 @@ class BookAShare extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title:
-          'BookAShare', //TODO: replace hard coded strings with references to SID's
+      //TODO: replace hard coded strings with references to SID's
       theme: mainTheme,
+      title: 'BookAShare',
       home: MainTabPageWidget(),
     );
   }
@@ -56,18 +56,19 @@ class _MainTaps extends State<MainTabPageWidget> {
             });
           },
           items: [
-            //TODO: replace hard coded titles with references to SID's
             BottomNavigationBarItem(
+              //TODO: replace hard coded titles with references to SID's
               icon: Icon(Icons.bookmark),
-              title: Text('Bookings'),
+              label: 'Bookings',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.pages),//TODO: find better icon
-              title: Text('Browse'),
+              //TODO: find better icon
+              icon: Icon(Icons.pages),
+              label: 'Browse',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
-              title: Text('Profile'),
+              label: 'Profile',
             ),
           ],
         ),
